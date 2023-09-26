@@ -16,6 +16,7 @@ import { LocalStorageService } from "./local-storage.service";
 })
 export class FilmeService{
     
+    
     historico:HistoricoFavoritos;
     constructor(private http: HttpClient, private sanitizer: DomSanitizer,private localStorageService: LocalStorageService)
     {
@@ -43,6 +44,13 @@ export class FilmeService{
         return this.historico.filmes;
     }
 
+    selecionarFilmesPorNome(page: number, nome: string) {
+      return this.http.get<any>(`${this.API_URL}/search/movie?query=${nome}&include_adult=false&language=pt-BR&page=${page}`
+        ,this.ObterHeaderDeAutorizacao()).pipe(
+            map((r: any) => r.results),
+            map((results: any[]) => this.mapearListaFilme(results)),
+        );
+    }
 
     selecionarFilmesPopulares(pagina:number): Observable<Filme[]>{
 

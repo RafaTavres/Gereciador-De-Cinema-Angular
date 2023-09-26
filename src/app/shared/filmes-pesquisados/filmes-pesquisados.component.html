@@ -1,0 +1,31 @@
+<section class="row gap-3">
+
+    <div class="row shadow gradient">
+        <h1 class="text-dark">Pesquisando Por: {{nome}}</h1>
+    </div>
+
+    <div class="row g-3 align-content-center">
+        <ngb-pagination 
+                
+            class="ngb-pagination d-flex d-flex"
+            size="sm"
+            (pageChange)="mudarDePagina()"
+            [collectionSize]="4000"
+            [(page)]="page"
+            [maxSize]="15"
+            [rotate]="true"
+            [ellipses]="false"
+            [boundaryLinks]="true"
+
+        ></ngb-pagination>
+    </div>
+
+    <div class="row g-3">
+
+        <div *ngFor="let filme of filmes" class="col-sm-4 col-md-3 col-lg-2 shadow ">
+            <app-card-filme  [filme]="filme"></app-card-filme>
+        </div>
+
+    </div>
+
+</section>

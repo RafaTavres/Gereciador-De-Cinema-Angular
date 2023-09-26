@@ -1,1 +1,4 @@
-<app-listar-filmes></app-listar-filmes>
+<app-navbar (onVoltar)="desativarLayoutBusca()" (onPesquisa)="ativarLayoutBusca($event)"></app-navbar>
+<app-filmes-pesquisados *ngIf="busca == true" [nome]="nomeBuscado"></app-filmes-pesquisados>
+<app-listar-filmes *ngIf="busca == false"></app-listar-filmes>
+

@@ -21,6 +21,8 @@ import { VgBufferingModule } from '@videogular/ngx-videogular/buffering';
 import { YouTubePlayerModule } from '@angular/youtube-player';
 import { SafePipe } from './pipe/safe.pipe';
 import { CommonModule } from '@angular/common';
+import { BarraDePesquisaComponent } from './shared/barra-de-pesquisa/barra-de-pesquisa.component';
+import { FilmesPesquisadosComponent } from './shared/filmes-pesquisados/filmes-pesquisados.component';
 
 
 
@@ -34,6 +36,8 @@ import { CommonModule } from '@angular/common';
     CardFilmeComponent,
     ListarFilmesComponent,
     SafePipe,
+    BarraDePesquisaComponent,
+    FilmesPesquisadosComponent,
     
 
   ],
