@@ -1,0 +1,30 @@
+ngb-pagination ::ng-deep ul > li:not(.active) > a {
+     color: black;
+}
+
+ngb-pagination ::ng-deep ul > li:not(.active) > a{
+     border-radius: 25%;
+}
+
+
+ngb-pagination::ng-deep ul.pagination > li.page-item > a:hover,
+ngb-pagination::ng-deep ul.pagination > li.page-item > a:focus {
+     background-size: 0 0.1em, 100% 0.1em;
+     color:black
+}
+
+ngb-pagination::ng-deep ul.pagination > li.page-item > a:active {
+     background-size: 0 0.1em, 100% 0.1em;
+     color:black
+}
+
+ngb-pagination::ng-deep ul.pagination > li.page-item > a{
+     background: 
+       linear-gradient(to right, rgb(248, 246, 246), rgb(255, 255, 255)),
+       linear-gradient(to right, rgb(145, 143, 143), rgba(255, 0, 180, 1), rgba(0, 100, 200, 1));
+     background-size: 100% 2em, 0 1em;
+     background-position: 100% 100%, 0 100%;
+     background-repeat: no-repeat;
+     transition: background-size 400ms;
+     color:black
+ }

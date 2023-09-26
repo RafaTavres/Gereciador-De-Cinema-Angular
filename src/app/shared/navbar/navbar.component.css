@@ -1,7 +1,5 @@
-@import url("bootstrap-icons/font/bootstrap-icons.min.css");
-
-body{
-    background: #f7f7f7;
+.navbar{
+    background: #667eea;
     background: -webkit-linear-gradient(to right, rgba(144, 145, 224, 0.726), rgba(222, 224, 224, 0.993));
     background: linear-gradient(to right, rgba(144, 145, 224, 0.726), rgb(238, 238, 238))
 }

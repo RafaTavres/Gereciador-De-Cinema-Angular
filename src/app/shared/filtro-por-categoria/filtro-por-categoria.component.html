@@ -1,0 +1,44 @@
+<div class="row g-2">
+
+
+    <div class="col-6 col-lg-1">
+        <button
+        (click)="selecionarFavoritos('favoritos')"
+        ngbTooltip="TFavoritos"
+        placement="left"
+        class="app-badge-filtro text-dark badge w-100 p-2 fs-6 fw-semibold"
+        >Meus Favoritos</button>
+    </div>
+
+
+    <div class="col-6 col-lg-1">
+        <button
+        (click)="selecionarComFiltro('popular')"
+        ngbTooltip="Filtrar por Categoria"
+        placement="bottom"
+        class="app-badge-filtro text-dark badge w-100 p-2 fs-6 fw-semibold"
+   
+        >Mais Populares</button>
+    </div>
+
+    <div class="col-6 col-lg-1">
+        <button
+        (click)="selecionarComFiltro('upcoming')"
+        ngbTooltip="Filtrar por Categoria"
+        placement="bottom"
+        class="app-badge-filtro text-dark badge w-100 p-2 fs-6 fw-semibold"
+        >Filmes Chegando</button>
+
+    </div>
+
+    
+    <div class="col-6 col-lg-1">
+        <button
+        (click)="selecionarComFiltro('now_playing')"
+        ngbTooltip="Filtrar por Categoria"
+        placement="bottom"
+        class="app-badge-filtro text-dark badge w-100 p-2 fs-6 fw-semibold"
+        >No Cinema</button>
+
+    </div>
+</div>
