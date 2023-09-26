@@ -12,7 +12,7 @@ export class ListarFilmesComponent implements OnInit {
 
   page = 1;
   filmes: Filme[] = [];
-
+  _tipo:string | null = '';
 
   constructor(private filmeService:FilmeService,private toastService:ToastrService) {}
 
@@ -41,6 +41,8 @@ export class ListarFilmesComponent implements OnInit {
 
   filtrarFilmesPorTipo(tipo: string|null) {
 
+    this._tipo = tipo;
+
     if(tipo == null){
       this.selecionarTodosFilmes();
       return;
@@ -56,6 +58,6 @@ export class ListarFilmesComponent implements OnInit {
 
 
   mudarDePagina(){
-    setTimeout(()=> {this.selecionarTodosFilmes()},100)
+    setTimeout(()=> {this.filtrarFilmesPorTipo(this._tipo)},100)
   }
 }
