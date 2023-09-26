@@ -20,7 +20,7 @@ import { VgOverlayPlayModule } from '@videogular/ngx-videogular/overlay-play';
 import { VgBufferingModule } from '@videogular/ngx-videogular/buffering';
 import { YouTubePlayerModule } from '@angular/youtube-player';
 import { SafePipe } from './pipe/safe.pipe';
-import { CommonModule } from '@angular/common';
+import { CommonModule, ImageLoaderConfig, IMAGE_LOADER, NgOptimizedImage, provideImgixLoader } from '@angular/common';
 import { BarraDePesquisaComponent } from './shared/barra-de-pesquisa/barra-de-pesquisa.component';
 import { FilmesPesquisadosComponent } from './shared/filmes-pesquisados/filmes-pesquisados.component';
 
@@ -55,6 +55,7 @@ import { FilmesPesquisadosComponent } from './shared/filmes-pesquisados/filmes-p
     VgBufferingModule,
     YouTubePlayerModule,
     CommonModule,
+    NgOptimizedImage,
 
     ToastrModule.forRoot({
       timeOut:5000,
@@ -65,7 +66,13 @@ import { FilmesPesquisadosComponent } from './shared/filmes-pesquisados/filmes-p
    
   ],
   
-  providers: [],
+  providers: [
+    {  provide: IMAGE_LOADER,
+       useValue: (config: ImageLoaderConfig) => {
+       return `https://image.tmdb.org/t/p/w500/${config.src}`;}
+  
+    },
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

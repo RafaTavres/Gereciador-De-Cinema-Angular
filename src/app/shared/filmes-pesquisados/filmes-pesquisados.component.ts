@@ -29,8 +29,6 @@ export class FilmesPesquisadosComponent implements OnInit, OnChanges{
     }
     this.filmeService.selecionarFilmesPorNome(this.page,nome).subscribe((filmes: Filme[]) => {
       this.filmes = filmes
-      console.log(filmes);
-
       if(filmes.length == 0){
          this.filmes = []
          this.toastService.warning('Nenhum Filme encontrado','Falha');

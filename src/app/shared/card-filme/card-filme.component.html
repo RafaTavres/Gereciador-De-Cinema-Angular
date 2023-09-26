@@ -1,7 +1,11 @@
 <div class="card-body" routerLink="/filmes/detalhes/{{filme.id}}">  
     <img 
-    src="https://image.tmdb.org/t/p/w500/{{filme.poster}}"
-    class="card-img-top img-fluid rounded-3"/> 
+    ngSrc="{{filme.poster}}"
+    ngSrcset="100w, 200w" 
+    width="400" height="200"
+    class="card-img-top img-fluid rounded-3"
+    loading="lazy"
+    /> 
     <h5 class="card-title">{{ filme.title }}</h5>
 
 </div>

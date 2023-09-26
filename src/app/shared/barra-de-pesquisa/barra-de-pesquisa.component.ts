@@ -12,7 +12,7 @@ export class BarraDePesquisaComponent {
   nomePesquisado:string;
   constructor(){
     this.onNomePesquisado = new EventEmitter();
-    this.nomePesquisado = 'INDIANA';
+    this.nomePesquisado = '';
   }
 
   pesquisarFilme() {
