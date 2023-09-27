@@ -12,9 +12,12 @@ export class ListarFilmesComponent implements OnInit {
 
   page = 1;
   filmes: Filme[] = [];
-  _tipo:string | null = '';
+  _tipo:string | null;
 
-  constructor(private filmeService:FilmeService,private toastService:ToastrService) {}
+  constructor(private filmeService:FilmeService,private toastService:ToastrService) 
+  {
+    this._tipo = 'popular';
+  }
 
   ngOnInit(): void {
    this.selecionarTodosFilmes();
@@ -42,18 +45,18 @@ export class ListarFilmesComponent implements OnInit {
   filtrarFilmesPorTipo(tipo: string|null) {
 
     this._tipo = tipo;
-
-    if(tipo == null){
+    
+    if(this._tipo == null){
       this.selecionarTodosFilmes();
       return;
     }
 
-    if(tipo == 'favoritos'){
+    if(this._tipo == 'favoritos'){
       this.selecionarFavoritos();
       return;
     }
 
-    this.selecionarFilmesPorTipo(tipo);
+    this.selecionarFilmesPorTipo(this._tipo);
   }
 
 
