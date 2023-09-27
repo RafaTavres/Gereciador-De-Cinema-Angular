@@ -1,4 +1,4 @@
-import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { ChangeDetectorRef, Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Filme } from 'src/app/models/Filme';
@@ -13,17 +13,20 @@ export class FilmesPesquisadosComponent implements OnInit, OnChanges{
 
   page = 1;
   filmes: Filme[] = [];
-  nome: string | null;
-  constructor(private filmeService:FilmeService,private route: ActivatedRoute,private toastService:ToastrService) { this.nome = ''}
+  nome: string;
+  constructor(private filmeService:FilmeService,private route: ActivatedRoute,private toastService:ToastrService) {  this.nome = ''}
   
   
   ngOnInit(): void {
     this.nome = String(this.route.snapshot.paramMap.get('nome')!);
     this.selecionarFilmesPorNome(this.nome);
   }
+
   ngOnChanges(changes: SimpleChanges): void {
+    this.nome = String(this.route.snapshot.paramMap.get('nome')!);
     this.selecionarFilmesPorNome(this.nome);
   }
+
 
   selecionarFilmesPorNome(nome: string | null){
     if(nome == null){
@@ -39,10 +42,6 @@ export class FilmesPesquisadosComponent implements OnInit, OnChanges{
     
   }
   
-  pesquisar(nome:string | null){
-    this.selecionarFilmesPorNome(nome);
-  }
-
   mudarDePagina(){
     setTimeout(()=> {this.selecionarFilmesPorNome(this.nome)},100)
   }

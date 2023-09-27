@@ -2,7 +2,7 @@
     <div class="form-outline">
       <input [(ngModel)]="nomePesquisado" type="search" id="form1" class="form-control" />
     </div>
-    <button routerLink="/filmes/busca/{{nomePesquisado}}" type="button" class="rounded btn btn-primary">
+    <button (click)="pesquisar()" type="button" class="rounded btn btn-primary">
       <i class="bi bi-search"></i>
     </button>
   </div>
