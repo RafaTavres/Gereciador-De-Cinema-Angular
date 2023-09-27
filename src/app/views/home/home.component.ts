@@ -7,20 +7,6 @@ import { Component } from '@angular/core';
 })
 export class HomeComponent {
 
-  nomeBuscado:string | null;
-  busca:boolean;
-
-  ativarLayoutBusca(nome:string | null){
-    this.nomeBuscado = nome;
-    this.busca = true
-  }
-
-  desativarLayoutBusca(){
-    this.busca = false
-  }
-
   constructor() {
-    this.busca = false
-    this.nomeBuscado = '';
   }
 }

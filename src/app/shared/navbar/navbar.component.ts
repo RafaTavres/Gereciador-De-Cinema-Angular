@@ -7,22 +7,8 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 })
 export class NavbarComponent {
 
-  @Input() desativarBusca: boolean = false;
-
-  @Output() onPesquisa: EventEmitter<string | null>
-
-  @Output() onVoltar: EventEmitter<boolean>
+  @Input() nome: string = '';
 
   constructor(){
-    this.onPesquisa = new EventEmitter();
-    this.onVoltar = new EventEmitter();
-  }
-
-  pesquisar(nome:string | null){
-    this.onPesquisa.emit(nome);
-  }
-
-  voltar(){
-    this.onVoltar.emit(true);
   }
 }

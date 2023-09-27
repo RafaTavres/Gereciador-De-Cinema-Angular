@@ -7,16 +7,10 @@ import { Component, EventEmitter, Output } from '@angular/core';
 })
 export class BarraDePesquisaComponent {
 
-  @Output() onNomePesquisado: EventEmitter<string>
-
   nomePesquisado:string;
+  
   constructor(){
-    this.onNomePesquisado = new EventEmitter();
     this.nomePesquisado = '';
-  }
-
-  pesquisarFilme() {
-    this.onNomePesquisado.emit(this.nomePesquisado);
   }
 
 }

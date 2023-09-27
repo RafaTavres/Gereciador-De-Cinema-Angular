@@ -1,10 +1,10 @@
 <!-- Navbar -->
 <nav class="navbar navbar-light bg-light">
     <div class="container-fluid px-lg-4" >
-      <a ngbTooltip="Voltar para o Inicio" (click)="voltar()" class="navbar-brand text-dark fw-semibold" routerLink="/">
+      <a ngbTooltip="Voltar para o Inicio" class="navbar-brand text-dark fw-semibold" routerLink="/">
         <i class="bi bi-camera-reels-fill"></i>
         Gerenciador de Cinema
       </a>
-      <app-barra-de-pesquisa *ngIf="desativarBusca == false" (onNomePesquisado)="pesquisar($event)"></app-barra-de-pesquisa>
+      <app-barra-de-pesquisa></app-barra-de-pesquisa>
     </div>
   </nav>

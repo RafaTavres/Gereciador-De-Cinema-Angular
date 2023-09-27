@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { FilmesPesquisadosComponent } from './views/filmes-pesquisados/filmes-pesquisados.component';
 import { DetalhesFilmesComponent } from './views/detalhes-filmes/detalhes-filmes.component';
 import { HomeComponent } from './views/home/home.component';
 
@@ -17,6 +18,11 @@ const routes: Routes = [
   {
     path: 'filmes/detalhes/:id',
     component: DetalhesFilmesComponent,
+  }
+  ,
+  {
+    path: 'filmes/busca/:nome',
+    component: FilmesPesquisadosComponent,
   }
 
   

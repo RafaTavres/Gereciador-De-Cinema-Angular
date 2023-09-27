@@ -1,4 +1,5 @@
 import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Filme } from 'src/app/models/Filme';
 import { FilmeService } from 'src/app/services/filme.service';
@@ -12,11 +13,12 @@ export class FilmesPesquisadosComponent implements OnInit, OnChanges{
 
   page = 1;
   filmes: Filme[] = [];
-  @Input() nome: string | null;
-  constructor(private filmeService:FilmeService,private toastService:ToastrService) { this.nome = ''}
+  nome: string | null;
+  constructor(private filmeService:FilmeService,private route: ActivatedRoute,private toastService:ToastrService) { this.nome = ''}
   
   
   ngOnInit(): void {
+    this.nome = String(this.route.snapshot.paramMap.get('nome')!);
     this.selecionarFilmesPorNome(this.nome);
   }
   ngOnChanges(changes: SimpleChanges): void {
