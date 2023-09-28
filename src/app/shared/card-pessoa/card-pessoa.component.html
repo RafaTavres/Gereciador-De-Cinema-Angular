@@ -1,0 +1,12 @@
+<div class="card-body cartao" routerLink="/pessoas/detalhes/{{pessoa.id}}">  
+    <img 
+    *ngIf="pessoa.profile_path != null"
+    ngSrc="{{pessoa.profile_path}}"
+    ngSrcset="100w, 200w" 
+    width="400" height="200"
+    class="card-img-top img-fluid rounded-3"
+    loading="lazy"
+    /> 
+    <h5 class="card-title">{{ pessoa.name }}</h5>
+
+</div>

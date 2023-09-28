@@ -62,21 +62,47 @@
         <nav class="navbar lista-creditos">
             <div class="container shadow divGeneros">
                 <p class="text-dark fs-4 fw-bold">Diretor(es):</p>
-                <p class="text-dark " *ngFor="let diretor of listaDeDiretores">{{diretor}}  </p>
+                <i class="text-dark link" *ngFor="let diretor of listaDeDiretores" routerLink="/pessoas/detalhes/{{diretor.id}}">
+                <img *ngIf="diretor.profile_path != null"
+                    ngSrc="{{diretor.profile_path}}"
+                    ngSrcset="1w, 2w" 
+                    width="25" height="25"
+                    class=" img-fluid rounded"
+                    loading="eager"
+                    /> 
+                {{diretor.name}} |</i>
             </div>
         </nav>
 
         <nav class="navbar lista-creditos">
             <div class="container shadow divGeneros ">
                 <p class="text-dark fs-4 fw-bold">Ator(es):</p>
-                <p class="text-dark " *ngFor="let ator of listaDeAtores">{{ator}}  </p>
+                <i class="text-dark link " *ngFor="let ator of listaDeAtores" routerLink="/pessoas/detalhes/{{ator.id}}" >
+                    <img *ngIf="ator.profile_path != null"
+                    ngSrc="{{ator.profile_path}}"
+                    ngSrcset="1w, 2w" 
+                    width="25" height="25"
+                    class=" img-fluid rounded"
+                    loading="eager"
+                    />
+                    
+                {{ator.name}} |</i>
             </div>
         </nav>
 
         <nav class="navbar  lista-creditos">      
             <div class="container shadow divGeneros">
                 <p class="text-dark fs-4 fw-bold">Escritor(es):</p>
-                <p class="text-dark " *ngFor="let escritor of listaDeEscritores">{{escritor}}  </p>
+                <i class="text-dark link" *ngFor="let escritor of listaDeEscritores" routerLink="/pessoas/detalhes/{{escritor.id}}">
+                    <img *ngIf="escritor.profile_path != null"
+                    ngSrc="{{escritor.profile_path}}"
+                    ngSrcset="1w, 2w" 
+                    width="25" height="25"
+                    class=" img-fluid rounded"
+                    loading="eager"
+                    />
+                    
+                {{escritor.name}} |</i>
             </div> 
         </nav>
 

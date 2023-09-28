@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { FilmesPesquisadosComponent } from './views/filmes-pesquisados/filmes-pesquisados.component';
 import { DetalhesFilmesComponent } from './views/detalhes-filmes/detalhes-filmes.component';
 import { HomeComponent } from './views/home/home.component';
+import { DetalhesPessoasComponent } from './views/detalhes-pessoas/detalhes-pessoas.component';
 
 const routes: Routes = [
   {
@@ -23,6 +24,11 @@ const routes: Routes = [
   {
     path: 'filmes/busca/:nome',
     component: FilmesPesquisadosComponent,
+  }
+  ,
+  {
+    path: 'pessoas/detalhes/:id',
+    component: DetalhesPessoasComponent,
   }
 
   

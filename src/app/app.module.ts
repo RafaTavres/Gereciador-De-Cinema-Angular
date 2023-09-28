@@ -23,6 +23,8 @@ import { SafePipe } from './pipe/safe.pipe';
 import { CommonModule, ImageLoaderConfig, IMAGE_LOADER, NgOptimizedImage, provideImgixLoader } from '@angular/common';
 import { BarraDePesquisaComponent } from './shared/barra-de-pesquisa/barra-de-pesquisa.component';
 import { FilmesPesquisadosComponent } from './views/filmes-pesquisados/filmes-pesquisados.component';
+import { DetalhesPessoasComponent } from './views/detalhes-pessoas/detalhes-pessoas.component';
+import { CardPessoaComponent } from './shared/card-pessoa/card-pessoa.component';
 
 
 
@@ -38,6 +40,8 @@ import { FilmesPesquisadosComponent } from './views/filmes-pesquisados/filmes-pe
     SafePipe,
     BarraDePesquisaComponent,
     FilmesPesquisadosComponent,
+    DetalhesPessoasComponent,
+    CardPessoaComponent,
     
 
   ],

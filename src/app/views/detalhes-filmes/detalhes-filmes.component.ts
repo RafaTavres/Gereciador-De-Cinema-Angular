@@ -22,9 +22,9 @@ export class DetalhesFilmesComponent  implements OnInit{
   safeurl:any;
   generos:Genero[];
 
-  listaDeAtores:string[] = [];
-  listaDeDiretores:string[] = [];
-  listaDeEscritores:string[] = [];
+  listaDeAtores:Cast[] = [];
+  listaDeDiretores:Cast[] = [];
+  listaDeEscritores:Cast[] = [];
 
 
   constructor(private filmeService:FilmeService,private route: ActivatedRoute,private toastService:ToastrService,private localStorageService: LocalStorageService){
@@ -37,7 +37,7 @@ export class DetalhesFilmesComponent  implements OnInit{
   ngOnInit(): void {
       const id:number = parseInt(this.route.snapshot.paramMap.get('id')!);
 
-      this.filmeService.selecionarPorId(id)!.subscribe((filme) => {
+      this.filmeService.selecionarFilmePorId(id)!.subscribe((filme) => {
         this.filme = filme;
 
         for(let filmeFavorito of this.filmeService.selecionarFavoritos()){
@@ -86,12 +86,12 @@ export class DetalhesFilmesComponent  implements OnInit{
   }
 
   private pegarListaDosCreditos(credito: Cast[], tipo: string): any[] {
-    let list:any[] = [];
+    let list:Cast[] = [];
 
     for(let cast of credito){
-        if(!list.includes(cast.name)){
+        if(!list.includes(cast)){
             if(cast.known_for_department == tipo){
-                list.push(cast.name);
+                list.push(cast);
             }
         }             
     }

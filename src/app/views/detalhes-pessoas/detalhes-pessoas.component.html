@@ -1,0 +1,37 @@
+<div class="row">
+    <div class=" d-flex gap-3">
+
+        <div class="col-6 col-sm-8 col-md-6 col-lg-2">
+    
+            <img 
+                ngSrc="{{pessoa.profile_path}}"
+                ngSrcset="100w, 200w" 
+                width="400" height="200"
+                class=" img-fluid rounded-3"
+                loading="lazy"
+            /> 
+        </div>
+        
+        <div class="col-6 col-sm-4 col-md-6 col-lg-10">
+            <h4>{{pessoa.biography == ''? "Nao possui biografia":pessoa.biography}}</h4>
+        </div>
+    
+    </div>
+    
+    
+    <div class="row g-3">
+        <h1>Outros Titulos para: {{pessoa.name}}</h1>
+    
+        <h5 *ngIf="pessoa.movie_credits_cast.length == 0 && pessoa.movie_credits_crew.length == 0">Nao possui outras Obras</h5>
+
+        <div *ngFor="let filme of pessoa.movie_credits_cast" class="col-sm-4 col-md-3 col-lg-2 shadow ">
+            <app-card-filme  [filme]="filme"></app-card-filme>
+        </div>
+
+        <div *ngFor="let filme of pessoa.movie_credits_crew" class="col-sm-4 col-md-3 col-lg-2 shadow ">
+            <app-card-filme  [filme]="filme"></app-card-filme>
+        </div>
+    
+    </div>
+</div>
+

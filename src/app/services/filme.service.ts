@@ -10,6 +10,7 @@ import { Genero } from "../models/genero";
 import { Credito } from "../models/credito";
 import { HistoricoFavoritos } from "../models/historico-favoritos";
 import { LocalStorageService } from "./local-storage.service";
+import { Cast } from "../models/cast";
 
 @Injectable({
     providedIn:'root'
@@ -52,6 +53,14 @@ export class FilmeService{
         );
     }
 
+    selecionarPessoasPorNome(page: number, nome: string) {
+      return this.http.get<any>(`${this.API_URL}/search/person?query=${nome}&include_adult=false&language=pt-BR&page=${page}`
+        ,this.ObterHeaderDeAutorizacao()).pipe(
+            map((r: any) => r.results),
+            map((results: any[]) => this.obterIdsDaLista(results))
+        );
+    } 
+
     selecionarFilmesPopulares(pagina:number): Observable<Filme[]>{
 
         return this.http.get<any>(`${this.API_URL}/movie/popular?language=pt-BR&page=${pagina}`
@@ -61,10 +70,16 @@ export class FilmeService{
         );
     }
 
-    selecionarPorId(id:number){
+    selecionarFilmePorId(id:number){
 
         return this.http.get<any>(`${this.API_URL}/movie/${id}?language=pt-BR`
         ,this.ObterHeaderDeAutorizacao()).pipe(map((r: any) => this.mapearFilme(r)));
+    }
+
+    selecionarPessoaPorId(id:number){
+
+        return this.http.get<any>(`${this.API_URL}/person/${id}?append_to_response=movie_credits&language=pt-BR`
+        ,this.ObterHeaderDeAutorizacao()).pipe(map((r: any) => this.mapearPessoa(r)));
     }
 
     buscarVideo(id: any) {
@@ -130,6 +145,25 @@ export class FilmeService{
             obj.id,
         )
     }
+
+    private mapearPessoa(obj: any): Cast{  
+      return new Cast(
+          obj.id,
+          obj.known_for_department,
+          obj.name,
+          obj.profile_path,
+          this.mapearListaFilme(obj.movie_credits.cast),
+          this.mapearListaFilme(obj.movie_credits.crew),
+          obj.biography
+        )
+    }
+
+    private obterIdsDaLista(objs: any): number[]{  
+        return objs.map((obj: any) => {
+          return obj.id;
+      })
+    }
+
     private ObterHeaderDeAutorizacao(){
         return {
             method:'GET',
