@@ -28,3 +28,7 @@ ngb-pagination::ng-deep ul.pagination > li.page-item > a{
     transition: background-size 400ms;
     color:black
 }
+
+.list-group-item:hover{
+    cursor: pointer;
+}

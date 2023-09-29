@@ -18,12 +18,16 @@ export class FilmesPesquisadosComponent implements OnInit, OnChanges{
   nome: string;
   verFilmes:boolean;
   verPessoas:boolean;
+  pessoasAtivos:string;
+  filmesAtivos:string;
 
   constructor(private filmeService:FilmeService,private route: ActivatedRoute,private toastService:ToastrService) 
   { 
     this.verFilmes = true;
     this.verPessoas = false;
     this.nome = ''
+    this.pessoasAtivos = ''
+    this.filmesAtivos = ''
   }
   
   
@@ -41,10 +45,14 @@ export class FilmesPesquisadosComponent implements OnInit, OnChanges{
   }
 
   mostrarFilmes(){
+    this.filmesAtivos = 'active'
+    this.pessoasAtivos = ''
     this.verPessoas = false;
     this.verFilmes = true
   }
   mostrarPessoas(){
+    this.filmesAtivos = ''
+    this.pessoasAtivos = 'active'
     this.verFilmes = false
     this.verPessoas = true
   }
@@ -70,9 +78,9 @@ export class FilmesPesquisadosComponent implements OnInit, OnChanges{
     this.filmeService.selecionarPessoasPorNome(this.page,nome).subscribe((ids : number[]) => {
 
       for(let id of ids){
-      
+        this.pessoas = []
         this.filmeService.selecionarPessoaPorId(id).subscribe((pessoa: Cast) =>{
-          this.pessoas.push(pessoa)
+         this.pessoas.push(pessoa)
         })
       }
 
@@ -80,7 +88,12 @@ export class FilmesPesquisadosComponent implements OnInit, OnChanges{
   }
   
   mudarDePagina(){
-    setTimeout(()=> {this.selecionarFilmesPorNome(this.nome)},100)
+    setTimeout(()=> {
+      if(this.verPessoas == true)
+        this.selecionarPessoasPorNome(this.nome)
+      if(this.verFilmes == true)
+        this.selecionarFilmesPorNome(this.nome)
+    },100)
   }
 
 }

@@ -4,39 +4,46 @@
         <h1  class="text-dark">Pesquisando Por: {{nome}}</h1>
     </div>
 
-    <div class="row g-3 align-content-center">
-        <ngb-pagination 
-                
-            class="ngb-pagination d-flex d-flex"
-            size="sm"
-            (pageChange)="mudarDePagina()"
-            [collectionSize]="4000"
-            [(page)]="page"
-            [maxSize]="15"
-            [rotate]="true"
-            [ellipses]="false"
-            [boundaryLinks]="true"
-
-        ></ngb-pagination>
-    </div>
-
-    <button (click)="mostrarFilmes()" class="col-md-2  btn bg-primary text-light">
-        Ver Filmes
-    </button>
-    <button (click)="mostrarPessoas()" class="col-md-2  btn bg-primary text-light">
-        Ver Pessoas
-    </button>
-
-    <div *ngIf="verFilmes == true" class="row g-3">
-        <div *ngFor="let filme of filmes" class="col-sm-4 col-md-3 col-lg-2 shadow ">
-            <app-card-filme  [filme]="filme"></app-card-filme>
+        <div class="row g-3 align-content-center">
+            <ngb-pagination 
+                    
+                class="ngb-pagination d-flex d-flex"
+                size="sm"
+                (pageChange)="mudarDePagina()"
+                [collectionSize]="4000"
+                [(page)]="page"
+                [maxSize]="15"
+                [rotate]="true"
+                [ellipses]="false"
+                [boundaryLinks]="true"
+    
+    
+            ></ngb-pagination>
         </div>
-    </div>
+    
+       
+        <div class="d-flex gap-3">
 
-    <div *ngIf="verPessoas == true" class="row g-3">
-        <div *ngFor="let pessoa of pessoas" class="col-sm-4 col-md-3 col-lg-2 shadow ">
-            <app-card-pessoa [pessoa]="pessoa"></app-card-pessoa>
+            <div class="col-3 row list-group">
+                <a class="list-group-item list-group-item-action active bg-dark">
+                    Resultados
+                </a>
+                <a (click)="mostrarFilmes()" class="list-group-item list-group-item-action {{filmesAtivos}}">Filmes</a>
+                <a (click)="mostrarPessoas()"class="list-group-item list-group-item-action {{pessoasAtivos}}">Pessoas</a>
+            </div>
+            
+            <div *ngIf="verFilmes == true" class="col-9 row g-3">
+                <div *ngFor="let filme of filmes" class="col-sm-4 col-md-3 col-lg-2 shadow ">
+                    <app-card-filme  [filme]="filme"></app-card-filme>
+                </div>
+            </div>
+        
+            <div *ngIf="verPessoas == true" class="col-9 row g-3">
+                <div *ngFor="let pessoa of pessoas" class="col-sm-4 col-md-3 col-lg-2 shadow ">
+                    <app-card-pessoa [pessoa]="pessoa"></app-card-pessoa>
+                </div>
+            </div>
         </div>
-    </div>
+   
 
 </section>
